@@ -11,4 +11,5 @@
  - 在浏览器中输入"chrome://extensions/"打开“扩展程序”页面
  - 点击“加载已解压的扩展程序...”按钮，在弹出的文件选择器中选择刚才解压的文件夹(选择到文件夹即可)
 
+或点击[链接](https://github.com/nfer/LundaoLaoJi/raw/master/release/LundaoLaoJi_1.0.crx)下载打包好的crx文件，然后拖动该crx文件到chrome的“扩展程序”页面进行安装
 
