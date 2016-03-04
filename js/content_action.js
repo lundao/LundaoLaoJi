@@ -15,6 +15,9 @@ var tipsHideTimer = null;
         var offset = link.offset();
 
         var data_id = $(this).attr('data-id');
+        if ( data_id == undefined )
+            return;
+
         var displayName = $(this).text();
         tips.html('<span style="padding:0 10px; color: #fff;">'+displayName+'是论道第'+data_id+'个注册的用户</span>');
 
