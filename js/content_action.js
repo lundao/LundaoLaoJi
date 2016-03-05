@@ -48,14 +48,32 @@ var tipsHideTimer = null;
         data_id = 0;
     });
 
-    if ( $('.aw-user-detail-box a.follow').length != 0 ) {
-        follow_link = $('.aw-user-detail-box .follow');
-        onclick_attr = follow_link.attr('onclick');
+    // https://www.lundao.com/people/xxx 页面
+    if ( $('.aw-user-detail-box').length != 0 ) {
+        var data_id;
+        // 其它人的页面
+        if ( $('.aw-user-detail-box a.follow').length != 0 ) {
+            follow_link = $('.aw-user-detail-box .follow');
+            onclick_attr = follow_link.attr('onclick');
 
-        // AWS.User.follow($(this), 'user', 372);
-        var regExp = /, ([0-9]+)\);$/;
-        var matches = regExp.exec(onclick_attr);
-        var data_id = matches[1];
+            // AWS.User.follow($(this), 'user', 372);
+            var regExp = /, ([0-9]+)\);$/;
+            var matches = regExp.exec(onclick_attr);
+            if ( matches ) {
+                data_id = matches[1];
+            }
+        }
+        // 自己的页面
+        else {
+            var script_html = $("script").html();
+
+            // var G_USER_ID = "2500";
+            var regExp = /.*G_USER_ID.*\"([0-9]+)\";/;
+            var matches = regExp.exec(script_html);
+            if ( matches ) {
+                data_id = matches[1];
+            }
+        }
 
         var constantTips = $(tipsTpl).hide().appendTo(body);
 
@@ -70,4 +88,5 @@ var tipsHideTimer = null;
             left: offset.left
         });
     }
+
 })();
