@@ -5,7 +5,6 @@ var tipsTpl = '<div style="position: absolute; z-index: 999; padding: 0 !importa
 var body = $(document.body);
 
 var tips = $(tipsTpl).hide().appendTo(body);
-var tipsWidth = tips.width();
 var tipsHideTimer = null;
 
 (function() {
@@ -58,13 +57,15 @@ var tipsHideTimer = null;
         var matches = regExp.exec(onclick_attr);
         var data_id = matches[1];
 
+        var constantTips = $(tipsTpl).hide().appendTo(body);
+
         if ( data_id != undefined ) {
-            tips.html('<span style="padding:0 10px; color: #fff;">论道第'+data_id+'个注册的用户</span>');
+            constantTips.html('<span style="padding:0 10px; color: #fff;">论道第'+data_id+'个注册的用户</span>');
         }
 
         var item = $('.aw-user-detail-box img');
         var offset = item.offset();
-        tips.show().offset({
+        constantTips.show().offset({
             top: offset.top + item.height() + 10,
             left: offset.left
         });
