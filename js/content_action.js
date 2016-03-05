@@ -20,10 +20,12 @@ var tipsHideTimer = null;
             data_id = link.attr('data-id');
         }
         // 在 https://www.lundao.com/people/ 页面
-        else if ( (onclick = link.parent().parent().children(".operate").children(".follow").attr('onclick')) != undefined ) {
+        else if ( link.parent().parent().children(".operate").children(".follow").length != 0 ) {
+            var follow_link = link.parent().parent().children(".operate").children(".follow");
+            var onclick_attr = follow_link.attr('onclick');
             // AWS.User.follow($(this), 'user', 372);
             var regExp = /, ([0-9]+)\);$/;
-            var matches = regExp.exec(onclick);
+            var matches = regExp.exec(onclick_attr);
             data_id = matches[1];
         }
         else {
