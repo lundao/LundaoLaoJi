@@ -48,4 +48,25 @@ var tipsHideTimer = null;
         tips.hide();
         data_id = 0;
     });
+
+    if ( $('.aw-user-detail-box a.follow').length != 0 ) {
+        follow_link = $('.aw-user-detail-box .follow');
+        onclick_attr = follow_link.attr('onclick');
+
+        // AWS.User.follow($(this), 'user', 372);
+        var regExp = /, ([0-9]+)\);$/;
+        var matches = regExp.exec(onclick_attr);
+        var data_id = matches[1];
+
+        if ( data_id != undefined ) {
+            tips.html('<span style="padding:0 10px; color: #fff;">论道第'+data_id+'个注册的用户</span>');
+        }
+
+        var item = $('.aw-user-detail-box img');
+        var offset = item.offset();
+        tips.show().offset({
+            top: offset.top + item.height() + 10,
+            left: offset.left
+        });
+    }
 })();
