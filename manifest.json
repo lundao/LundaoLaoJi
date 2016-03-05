@@ -3,7 +3,7 @@
 
   "name": "在论道你算老几",
   "description": "获取用户是论道第几个注册的",
-  "version": "2.0",
+  "version": "3.0",
 
   "content_scripts": [{
     "matches": ["*://*.lundao.com/*"],
